@@ -6,17 +6,17 @@ Use an accurate machine learning model to forecast the property tax assessment v
 
 ### <u>Project Description</u>
 
-Being the most frequently visited real estate platform in the United States, Zillow and its associated companies provide users with an on-demand experience for selling, buying, renting, and financing, marked by transparency and a nearly seamless end-to-end service. I have chosen to explore the various factors that influence the assessment of property tax values.
+As the foremost real estate platform in the United States, Zillow and its affiliated entities offer users a seamless, transparent, and highly accessed platform for selling, purchasing, renting, and securing financing. I have decided to delve into the multiple factors that impact the evaluation of property tax assessments.
 
 ### <u>Project Goal</u>
 
-* Identify the factors influencing property values within a particular market.
-* Utilize these factors to create a machine learning model that can make precise property value predictions.
-* This knowledge will enhance our comprehension of the tax assessment process for single-family properties and their valuation.
+* Recognize the elements that exert influence on property values in a specific market.
+* Employ these elements to construct a machine learning model capable of delivering accurate property value forecasts.
+* This information will bolster our understanding of the assessment procedure for single-family property taxes and their appraisals.
 
 ### <u>Initial Thoughts</u>
 
-I initially hypothesize that factors such as the number of rooms, square footage, and location will serve as significant determinants of tax-assessed property values.
+I propose that elements like room count, square footage, and location are likely to emerge as significant factors affecting tax-assessed property values.
 
 ## <u>The Process</u>
 
@@ -29,16 +29,16 @@ I initially hypothesize that factors such as the number of rooms, square footage
 3. **Explore data in search of drivers of property value**
 
   * Answer the following initial questions
-    * Is there a correlation between area and property value?
-    * Is there a correlation between age and property value?
-    * Is there a correlation between the room count and property value?
-    * Is there a difference in average property value between counties?
+    * Is there a correlation between `area` and `prop_value`?
+    * Is there a correlation between age and `prop_value`?
+    * Is there a correlation between the room count and `prop_value`?
+    * Is there a difference in average `prop_value` between counties?
 
-  Provide responses to the initial inquiries:
-  * Does a relationship exist between the property's size and its value?
-  * Is there a connection between the property's age and its value?
-  * Does the number of rooms in a property correlate with its value?
-  * Are there variations in average property values among different counties?
+  * Provide responses to the initial inquiries:
+   * Does a relationship exist between the property's size and its value?
+   * Is there a connection between the property's age and its value?
+   * Does the number of rooms in a property correlate with its value?
+   * Are there variations in average property values among different counties?
 
 4. **Develop a Model to predict property value**
 
@@ -51,19 +51,16 @@ I initially hypothesize that factors such as the number of rooms, square footage
 
 ## <u>Data Dictionary</u>
 
-| Original                     | Feature    | Type    | Definition                                              |
-| :--------------------------- | :--------- | :------ | :------------------------------------------------------ |
-| yearbuilt                    | year       | Year    | The year the principal residence was built              |
-| bedroomcnt                   | beds       | Numeric | Number of bedrooms in home                              |
-| bathroomcnt                  | baths      | Numeric | Number of bathrooms in home including fractional        |
-| roomcnt                      | roomcnt    | Numeric | Total number of rooms in the property                   |
-| calculatedfinishedsquarefeet | area       | SqFt    | Calculated total finished living area                   |
-| taxvaluedollarcnt (target)   | prop_value | USD     | The total tax assessed value of the parcel/home         |
-| fips                         | county     | County  | Federal Information Processing Standard (these 3 in CA) |
-| latitude                     | latitude   | Numeric | Latitude coordinates of property                        |
-| longitude                    | longitude  | Numeric | Longitude coordinates of property                       |
-| Additional Features          |            | Numeric | Encoded categorical variables                           |
-|                              | age        | Year    | How many years from 2017 since it was built             |
+| DF Name    |          DB Name              | dtype | Definition                  |
+| ---------- | ----------------------------- | ----- | --------------------------- | 
+| `age`      | NA *(2017 - `yearbuilt`)*     | int   | Age of the property         |
+| `beds`     | `bedroomcnt`                  | int   | Total bedrooms              |
+| `baths`    | `bathroomcnt`                 | int   | Total bathrooms             |
+| `area`     | `calculatedfinishedsquarefeet`| int   | Square footage of building  |
+| `value`    | `taxvaluedollarcnt`           | int   | Tax value of property (USD) |
+| `county`   | `fips`                        | str   | County of California        |
+| `latitude` | `latitude`                    | float | Latitude Coordinate         |
+| `longitude`| `longitude`                   | float | Longitude Coordinate        |
 
 FIPS County Codes:
 
@@ -85,21 +82,14 @@ FIPS County Codes:
 
 #### Takeaways and Key Findings
 
-* Property value tends to increase with a property's younger age.
-* Greater living area typically leads to higher property values.
+* Property value doesn't necessarily correlate with county, but more so the locations that are in each county
+* Denser population and living area typically leads to higher property values.
 * The property's location plays a significant role in determining its value.
-* There is room for further enhancement in the model's performance.
+* There is room for further enhancement and feature selection in the model's performance.
 
 ### Recommendations and Next Steps
 
-* It would nice to have the data to check if the included appliances or the type of heating services (gas or electric) of the property would affect property value
-
 * More time is needed to work on features to better improve the model
     - latitude and longitude could hopefully give insights into cities and neighborhoods with higher or lower property values
-    - pools and garages could also be looked into
-
-* Having access to data to investigate whether the presence of appliances or the type of heating system (gas or electric) in a property has an impact on its value would be valuable.
-
-* Additional time is required to enhance the model by incorporating additional features:
-    - Exploring latitude and longitude data may offer insights into areas with varying property values within cities and neighborhoods.
-    - Analyzing the influence of pools and garages on property values could be beneficial as well.
+    - garages and pools could prove to be beneficial
+    - potentially better data collection for some of the features
