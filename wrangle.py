@@ -270,6 +270,8 @@ def split_data(df, random_state=123):
 
 
 def kruskal(s1, s2, s3):
+    """A function take takes in 3 variables, and performs the kruskal
+    wallis stats testing on the 3."""
     stat, p = stats.kruskal(s1, s2, s3)
     print("Kruskal-Wallis H-Test:\n", f"stat = {stat}, p = {p}")
 
@@ -415,6 +417,19 @@ def box_plotter(df):
 
 
 def spearman(train, x, y, alt_hyp="two-sided"):
+    """
+    Calculate the Spearman's rank correlation coefficient and p-value between two variables,
+    and plot a regression line using Seaborn.
+
+    Parameters:
+    train (pandas.DataFrame): The training dataset.
+    x (str): The name of the first variable.
+    y (str): The name of the second variable.
+    alt_hyp (str, optional): The alternative hypothesis for the test. Default is "two-sided".
+
+    Returns:
+    None
+    """
     r, p = stats.spearmanr(train[x], train[y], alternative=alt_hyp)
     print(f"Spearman's R: {x} and {y}\n", f"R = {r}, P = {p}\n")
     sns.regplot(data=train, x=x, y=y, marker=".", line_kws={"color": "orange"})
