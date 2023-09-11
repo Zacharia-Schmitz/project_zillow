@@ -53,14 +53,14 @@ I propose that elements like room count, square footage, and location are likely
 
 | DF Name    |          DB Name              | dtype | Definition                  |
 | ---------- | ----------------------------- | ----- | --------------------------- | 
-| `age`      | NA *(2017 - `yearbuilt`)*     | int   | Age of the property         |
-| `beds`     | `bedroomcnt`                  | int   | Total bedrooms              |
-| `baths`    | `bathroomcnt`                 | int   | Total bathrooms             |
-| `area`     | `calculatedfinishedsquarefeet`| int   | Square footage of building  |
-| `value`    | `taxvaluedollarcnt`           | int   | Tax value of property (USD) |
-| `county`   | `fips`                        | str   | County of California        |
-| `latitude` | `latitude`                    | float | Latitude Coordinate         |
-| `longitude`| `longitude`                   | float | Longitude Coordinate        |
+| `age`       | NA *(2017 - `yearbuilt`)*     | int   | Age of the property         |
+| `beds`      | `bedroomcnt`                  | int   | Total bedrooms              |
+| `baths`     | `bathroomcnt`                 | int   | Total bathrooms             |
+| `area`      | `calculatedfinishedsquarefeet`| int   | Square footage of building  |
+| `prop_value`| `taxvaluedollarcnt`           | int   | Tax value of property (USD) |
+| `county`    | `fips`                        | str   | County in California        |
+| `latitude`  | `latitude`                    | float | Latitude Coordinate         |
+| `longitude` | `longitude`                   | float | Longitude Coordinate        |
 
 FIPS County Codes:
 
@@ -70,9 +70,9 @@ FIPS County Codes:
 
 ## <u>Steps to Reproduce</u>
 
-1) Clone this repo
+1) Clone the repo
 2) If you have access to Codeup's MySQL DB:
-   - Save **env.py** in the repo w/ `user`, `password`, and `host` variables
+   - Save **env.py** in the repo with `user`, `password`, and `host` variables
    - Run notebook
 3) If you don't have access:
    - Request access from Codeup
@@ -91,5 +91,4 @@ FIPS County Codes:
 
 * More time is needed to work on features to better improve the model
     - latitude and longitude could hopefully give insights into cities and neighborhoods with higher or lower property values
-    - garages and pools could prove to be beneficial
     - potentially better data collection for some of the features
